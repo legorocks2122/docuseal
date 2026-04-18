@@ -113,7 +113,7 @@ class ProcessSubmitterCompletionJob
         if user.role != 'integration' &&
            (!user_submitter || user_submitter.preferences['send_email'] == false) &&
            user.user_configs.find_by(key: UserConfig::RECEIVE_COMPLETED_EMAIL)&.value != false
-          SubmitterMailer.completed_email(submitter, user).deliver_later!
+          SubmitterMailer.completed_email(submitter, user).deliver_now!
 
           true
         end
@@ -121,7 +121,7 @@ class ProcessSubmitterCompletionJob
       build_bcc_addresses(submission).each do |to|
         next if is_sent_to_user && to == user.email
 
-        SubmitterMailer.completed_email(submitter, user, to:).deliver_later!
+        SubmitterMailer.completed_email(submitter, user, to:).deliver_now!
       end
     end
 
@@ -142,9 +142,9 @@ class ProcessSubmitterCompletionJob
     return if to.blank?
 
     if configs.value['bcc_recipients'] == true
-      to.each { |to| SubmitterMailer.documents_copy_email(submitter, to:).deliver_later! }
+      to.each { |to| SubmitterMailer.documents_copy_email(submitter, to:).deliver_now! }
     else
-      SubmitterMailer.documents_copy_email(submitter, to: to.join(', ')).deliver_later!
+      SubmitterMailer.documents_copy_email(submitter, to: to.join(', ')).deliver_now!
     end
   end
 
