@@ -25,7 +25,7 @@ class SubmitFormDeclineController < ApplicationController
     user = @submitter.submission.created_by_user || @submitter.template.author
 
     if user.user_configs.find_by(key: UserConfig::RECEIVE_DECLINED_EMAIL)&.value != false
-      SubmitterMailer.declined_email(@submitter, user).deliver_later!
+      SubmitterMailer.declined_email(@submitter, user).deliver_now!
     end
 
     WebhookUrls.enqueue_events(@submitter, 'form.declined')
