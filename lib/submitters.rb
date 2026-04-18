@@ -236,7 +236,7 @@ module Submitters
   def send_shared_link_email_verification_code(submitter, request:)
     RateLimit.call("send-otp-code-#{request.remote_ip}", limit: 2, ttl: 45.seconds, enabled: true)
 
-    TemplateMailer.otp_verification_email(submitter.submission.template, email: submitter.email).deliver_later!
+    TemplateMailer.otp_verification_email(submitter.submission.template, email: submitter.email).deliver_now!
   rescue RateLimit::LimitApproached
     Rollbar.warning("Limit verification code for template: #{submitter.submission.template.id}") if defined?(Rollbar)
 
