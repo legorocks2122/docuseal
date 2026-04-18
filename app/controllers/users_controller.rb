@@ -55,7 +55,7 @@ class UsersController < ApplicationController
     @user.role = User::ADMIN_ROLE unless role_valid?(@user.role)
 
     if @user.save
-      UserMailer.invitation_email(@user).deliver_later!
+      UserMailer.invitation_email(@user).deliver_now!
 
       redirect_back fallback_location: settings_users_path, notice: I18n.t('user_has_been_invited')
     else
