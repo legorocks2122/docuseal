@@ -23,7 +23,7 @@ function isValidSignatureCanvas (data) {
 
     const avgDeviation = totalDeviation / points.length
 
-    if (avgDeviation < 3 && skippedStraightLine < 2) {
+    if (avgDeviation < 1 && skippedStraightLine < 2) {
       skippedStraightLine++
 
       return false
