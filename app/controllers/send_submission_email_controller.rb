@@ -29,7 +29,7 @@ class SendSubmissionEmailController < ApplicationController
 
     RateLimit.call("send-email-#{@submitter.id}", limit: 2, ttl: 5.minutes)
 
-    SubmitterMailer.documents_copy_email(@submitter, sig: true).deliver_later! if can_send?(@submitter)
+    SubmitterMailer.documents_copy_email(@submitter, sig: true).deliver_now! if can_send?(@submitter)
 
     respond_to do |f|
       f.html { render :success }
