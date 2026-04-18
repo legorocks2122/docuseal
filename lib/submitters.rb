@@ -175,13 +175,10 @@ module Submitters
       next if submitter.declined_at?
       next if submitter.preferences['send_email'] == false
 
-      if delay_seconds
-        SendSubmitterInvitationEmailJob.perform_in((delay_seconds + index).seconds, 'submitter_id' => submitter.id)
-      else
-        SendSubmitterInvitationEmailJob.perform_async('submitter_id' => submitter.id)
+      Rails.logger.info("SEND_SIG_REQUESTS: calling job for #{submitter.email}")
+    SendSubmitterInvitationEmailJob.new.perform('submitter_id' => submitter.id)
       end
     end
-  end
 
   def current_submitter_order?(submitter)
     submission = submitter.submission
