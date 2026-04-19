@@ -777,7 +777,7 @@ export default {
     withDisclosure: {
       type: Boolean,
       required: false,
-      default: false
+      default: true
     },
     reuseSignature: {
       type: Boolean,
