@@ -94,7 +94,7 @@
         href=""
         target="_blank"
         class="underline"
-      ></a>  {{ t('open_source_documents_software') }}
+      ></a>  {{ t('') }}
     </div>
   </div>
 </template>
