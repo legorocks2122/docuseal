@@ -72,7 +72,7 @@ const en = {
   document_has_been_signed: 'Document has been signed!',
   documents_have_been_signed: 'Documents have been signed!',
   create_a_free_account: 'Create a Free Account',
-  powered_by: 'Powered by',
+  powered_by: '',
   please_check_the_box_to_continue: 'Please check the box to continue.',
   open_source_documents_software: 'open source documents software',
   verified_phone_number: 'Verify Phone Number',
