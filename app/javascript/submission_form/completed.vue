@@ -86,8 +86,15 @@
       </a>
     </div>
     <div
-      v-if="false"
-  class="text-center mt-4"
+      v-if="attribution"
+      class="text-center mt-4"
+    >
+      {{ t('powered_by') }}
+      <a
+        href=""
+        target="_blank"
+        class="underline"
+      ></a>  {{ t('open_source_documents_software') }}
     </div>
   </div>
 </template>
