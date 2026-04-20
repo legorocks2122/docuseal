@@ -366,7 +366,7 @@ en: &en
   verify_pdf: Verify PDF
   sign_out: Sign out
   page_number: 'Page %{number}'
-  powered_by: Powered by
+  powered_by: ''
   count_documents_signed_with_html: '<b>%{count}</b> documents signed with'
   storage: Storage
   notifications: Notifications
